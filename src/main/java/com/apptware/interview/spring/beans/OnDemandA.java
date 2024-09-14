@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Qualifier("OnDemandA")
 class OnDemandA extends BaseOnDemand {
 
-  //OnDemandA( @Value("Hello World!!!") String someString) {
   OnDemandA( @Value("Hello World!!!") String someString) {
     super(someString);
   }

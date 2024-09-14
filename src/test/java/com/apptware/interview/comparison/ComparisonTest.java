@@ -1,13 +1,10 @@
 package com.apptware.interview.comparison;
 
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.*;
-import java.util.Random;
-import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * This test class has a validation for {@link com.apptware.interview.comparison.SomeClass}. Creates
@@ -21,41 +18,41 @@ import org.junit.jupiter.api.Test;
  */
 class ComparisonTest {
 
-  public static final Random RANDOM = new Random();
+    public static final Random RANDOM = new Random();
 
-  @Test
-  void testSomeClasses() {
-    List<SomeClass> list1 = getSomeClasses();
-    List<SomeClass> list2 = getSomeClasses();
+    @Test
+    void testSomeClasses() {
+        List<SomeClass> list1 = getSomeClasses();
+        List<SomeClass> list2 = getSomeClasses();
 
-    List<SomeClass> latestDistinctItems =
-            (List<SomeClass>) Stream.concat(list1.stream(), list2.stream())
-                .sorted(Comparator.comparing(SomeClass::getLastInvoked).reversed())
-                .distinct().toList();
+        List<SomeClass> latestDistinctItems =
+                (List<SomeClass>) Stream.concat(list1.stream(), list2.stream())
+                        .sorted(Comparator.comparing(SomeClass::getLastInvoked).reversed())
+                        .distinct().toList();
 
-    Assertions.assertThat(latestDistinctItems).hasSize(10);
-  }
-
-  // Generates the same 10 unique instances everytime this method is invoked
-  private static List<SomeClass> getSomeClasses() {
-
-    List<SomeClass> someClasses = new ArrayList<>();
-    for (int i = 0; i < 10; i++) {
-      var someClass = new SomeClass(i, getRandomDate());
-      someClasses.add(someClass);
+        Assertions.assertThat(latestDistinctItems).hasSize(10);
     }
 
-    return someClasses;
-  }
+    // Generates the same 10 unique instances everytime this method is invoked
+    private static List<SomeClass> getSomeClasses() {
 
-  private static Date getRandomDate() {
-    Calendar calendar = Calendar.getInstance();
-    int year = RANDOM.nextInt(2024 - 2000) + 2000; // Random year between 2000 and 2024
-    int dayOfYear =
-        RANDOM.nextInt(calendar.getActualMaximum(Calendar.DAY_OF_YEAR))
-            + 1; // Random day of the year
-    calendar.set(Calendar.YEAR, year);
-    calendar.set(Calendar.DAY_OF_YEAR, dayOfYear);
-    return calendar.getTime();
-  }
+        List<SomeClass> someClasses = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            var someClass = new SomeClass(i, getRandomDate());
+            someClasses.add(someClass);
+        }
+
+        return someClasses;
+    }
+
+    private static Date getRandomDate() {
+        Calendar calendar = Calendar.getInstance();
+        int year = RANDOM.nextInt(2024 - 2000) + 2000; // Random year between 2000 and 2024
+        int dayOfYear =
+                RANDOM.nextInt(calendar.getActualMaximum(Calendar.DAY_OF_YEAR))
+                        + 1; // Random day of the year
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.DAY_OF_YEAR, dayOfYear);
+        return calendar.getTime();
+    }
 }
