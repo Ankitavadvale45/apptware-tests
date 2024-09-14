@@ -33,3 +33,35 @@ class SingletonTest {
     Assertions.assertThat(instance1.hashCode()).isEqualTo(instance2.hashCode());
   }
 }
+
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertNotEquals;
+//
+//import org.junit.jupiter.api.Test;
+//
+//public class SingletonTest {
+//
+//  @Test
+//  public void testSingleton() {
+//    Singleton instance1 = Singleton.getInstance();
+//    Singleton instance2 = Singleton.getInstance();
+//
+//    // Verify that both instances are the same
+//    assertEquals(instance1, instance2);
+//
+//    // Reflection test
+//    try {
+//      Class<?> clazz = Singleton.class;
+//      java.lang.reflect.Constructor<?> constructor = clazz.getDeclaredConstructor();
+//      constructor.setAccessible(true);
+//      Singleton instance3 = (Singleton) constructor.newInstance();
+//
+//      // Ensure that reflection does not create a new instance
+//      assertNotEquals(instance1, instance3);
+//
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//    }
+//  }
+//}
+//

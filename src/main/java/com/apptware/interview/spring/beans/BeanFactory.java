@@ -10,6 +10,6 @@ public class BeanFactory {
   @Autowired private ApplicationContext context;
 
   public OnDemand getOnDemandBean(SomeEnum someEnum, String someString) {
-    return context.getBean(BaseOnDemand.class, someString);
+    return context.getBean(BaseOnDemand.class, someString,someEnum);
   }
 }

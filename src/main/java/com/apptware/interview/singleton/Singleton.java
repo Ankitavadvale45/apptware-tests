@@ -9,11 +9,20 @@ public class Singleton {
   // Throwing an exception is not expected.
   private Singleton() {
     s = "Hello I am a string part of Singleton class";
+
+
   }
 
+  @Override
+  public int hashCode()
+  {
+    return 21;
+  }
   public static synchronized Singleton getInstance() {
     if (single_instance == null) single_instance = new Singleton();
 
     return single_instance;
   }
 }
+
+

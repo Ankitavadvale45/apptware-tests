@@ -1,10 +1,9 @@
 package com.apptware.interview.comparison;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.Random;
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
@@ -30,10 +29,10 @@ class ComparisonTest {
     List<SomeClass> list2 = getSomeClasses();
 
     List<SomeClass> latestDistinctItems =
-        Stream.concat(list1.stream(), list2.stream())
-            .sorted(Comparator.comparing(SomeClass::getLastInvoked).reversed())
-            .distinct()
-            .toList();
+            (List<SomeClass>) Stream.concat(list1.stream(), list2.stream())
+                .sorted(Comparator.comparing(SomeClass::getLastInvoked).reversed())
+                .distinct().toList();
+
     Assertions.assertThat(latestDistinctItems).hasSize(10);
   }
 
