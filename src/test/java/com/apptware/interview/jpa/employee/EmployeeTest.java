@@ -32,7 +32,8 @@ class EmployeeTest {
     employeeRepository.save(employee);
 
     Employee retrievedEmployee = employeeRepository.findById(employeeId).orElse(null);
-    Assertions.assertThat(retrievedEmployee.getId()).isEqualTo(employeeId);
+      assert retrievedEmployee != null;
+      Assertions.assertThat(retrievedEmployee.getId()).isEqualTo(employeeId);
     Assertions.assertThat(retrievedEmployee).isNotNull();
     Assertions.assertThat(retrievedEmployee.getName()).isEqualTo(employeeName);
   }

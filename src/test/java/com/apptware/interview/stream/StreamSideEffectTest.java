@@ -18,9 +18,11 @@ class StreamSideEffectTest {
     numbers.parallelStream()
         // <<<<< DO NOT CHANGE
         .map(
-            number -> {
-              results.add(number * 2);
-              return number * 2;
+            number ->  {
+                synchronized (results) {
+                    results.add(number);
+                }
+                return number;
             });
 
     Assertions.assertThat(numbers).containsExactlyInAnyOrder(results.toArray(Integer[]::new));
